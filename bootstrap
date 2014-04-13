@@ -1,0 +1,87 @@
+#!/usr/bin/env bash
+#
+# bootstrap installs things.
+
+DOTFILES_ROOT="$HOME/.dotfiles"
+
+set -e
+
+echo ''
+
+info () {
+    printf "  [ \033[00;34m..\033[0m ] $1"
+}
+
+user () {
+    printf "\r  [ \033[0;33m?\033[0m ] $1 "
+}
+
+success () {
+    printf "\r\033[2K  [ \033[00;32mOK\033[0m ] $1\n"
+}
+
+fail () {
+    printf "\r\033[2K  [\033[0;31mFAIL\033[0m] $1\n"
+    echo ''
+    exit
+}
+
+link_files () {
+    ln -s $1 $2
+    success "linked $1 to $2"
+}
+
+install_dotfiles () {
+    info 'installing dotfiles'
+
+    for source in `find $DOTFILES_ROOT -maxdepth 2 -name \*.symlink`
+    do
+	dest="$HOME/.`basename \"${source%.*}\"`"
+
+        rm -rf $dest
+        link_files $source $dest
+    done
+}
+
+get_emacs_packages() {
+
+    info 'getting emacs packages'
+
+    info 'getting cedet'
+    cd $DOTFILES_ROOT/emacs/emacs.d.symlink/my-packages && git clone http://git.randomsample.de/cedet.git cedet && git submodule init && git submodule update
+
+    info 'getting auto-complete'
+    cd $DOTFILES_ROOT/emacs/emacs.d.symlink/my-packages && git clone https://github.com/auto-complete/auto-complete.git auto-complete && git submodule init && git submodule update
+
+    info 'getting yasnippet'
+    cd $DOTFILES_ROOT/emacs/emacs.d.symlink/my-packages && git clone --recursive https://github.com/capitaomorte/yasnippet yasnippet
+
+    info 'getting yasnippets-latex'
+    cd $DOTFILES_ROOT/emacs/emacs.d.symlink/my-packages && git clone https://github.com/madsdk/yasnippets-latex.git yasnippets-latex
+
+    info 'getting emacs-color-theme-solarized'
+    cd $DOTFILES_ROOT/emacs/emacs.d.symlink/my-packages && git clone https://github.com/sellout/emacs-color-theme-solarized.git emacs-color-theme-solarized
+
+    info 'getting highlight-parentheses'
+    cd $DOTFILES_ROOT/emacs/emacs.d.symlink/my-packages && git clone https://github.com/nschum/highlight-parentheses.el.git highlight-parentheses
+}
+
+compile_emacs_packages() {
+    info 'compiling emacs packages'
+
+    # Compile cedet
+    cd $DOTFILES_ROOT/emacs/emacs.d.symlink/my-packages/cedet && make
+
+    # Compile auto-complete
+    cd $DOTFILES_ROOT/emacs/emacs.d.symlink/my-packages/auto-complete && make byte-compile
+}
+
+get_emacs_packages
+compile_emacs_packages
+echo ' '
+echo '  Linking files'
+echo ' '
+install_dotfiles
+
+echo ''
+echo '  All installed!'
