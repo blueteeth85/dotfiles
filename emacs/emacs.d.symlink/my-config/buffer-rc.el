@@ -9,7 +9,6 @@
       '((".*" "~/.emacs-auto-save/auto-save-files/" t))
       )
 
-(global-set-key (kbd "<f5>") 'find-file) ; Open file or dir
 (global-set-key (kbd "<f6>") 'kill-this-buffer) ; Close file
 
 (defun next-user-buffer ()
@@ -48,7 +47,9 @@ Emacs buffers are those whose name starts with *."
     (while (and (not (string-match "^*" (buffer-name))) (< i 50))
       (setq i (1+ i)) (previous-buffer) )))
 
-(define-key global-map [(ctrl up)] 'previous-emacs-buffer)
-(define-key global-map [(ctrl down)] 'next-emacs-buffer)
+(define-key global-map [(ctrl up)] 'beginning-of-buffer)
+(define-key global-map [(ctrl down)] 'end-of-buffer)
 (define-key global-map [(ctrl left)] 'previous-user-buffer)
 (define-key global-map [(ctrl right)] 'next-user-buffer)
+
+(require 'smooth-scrolling)

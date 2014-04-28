@@ -23,3 +23,9 @@
         '(fundamental-mode text-mode latex-mode html-mode emacs-lisp-mode
                            texinfo-mode c-mode c++-mode lisp-mode)
         )
+
+(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
+
+(setq compilation-scroll-output "first-error")
+(global-set-key [f4] 'compile)
+(global-set-key [f5] 'switch-to-buffer)
