@@ -4,6 +4,10 @@ DOTFILES_ROOT="$HOME/.dotfiles"
 
 set -e
 
+info () {
+    printf "  [ \033[00;34m..\033[0m ] $1"
+}
+
 get_emacs_packages() {
 
     info 'getting emacs packages'
