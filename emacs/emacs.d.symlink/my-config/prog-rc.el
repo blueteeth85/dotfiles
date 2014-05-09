@@ -3,7 +3,9 @@
 (show-paren-mode 1)
 (setq show-paren-delay 0)
 
+
 (setq c-default-style "linux")
+(setq-default c-basic-offset 2)
 
 (add-to-list 'load-path "~/.emacs.d/my-packages/highlight-parentheses/")
 (require 'highlight-parentheses)
