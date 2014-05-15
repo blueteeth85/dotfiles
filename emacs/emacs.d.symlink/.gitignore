@@ -9,3 +9,4 @@ semanticdb
 session.*
 srecode-map.el
 tramp
+custom.el
