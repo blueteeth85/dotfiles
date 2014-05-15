@@ -1,0 +1,12 @@
+ac-comphist.dat
+my-packages/auto-complete
+my-packages/cedet
+my-packages/emacs-color-theme-solarized
+my-packages/highlight-parentheses
+my-packages/yasnippet
+my-packages/yasnippets-latex
+semanticdb
+session.*
+srecode-map.el
+tramp
+custom.el

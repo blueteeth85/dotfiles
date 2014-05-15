@@ -41,6 +41,8 @@
   (local-set-key "\C-cq" 'semantic-ia-show-doc)
   (local-set-key "\C-cs" 'semantic-ia-show-summary)
   (local-set-key "\C-cp" 'semantic-analyze-proto-impl-toggle)
+  (local-set-key (kbd "M-<up>") 'senator-previous-tag)
+  (local-set-key (kbd "M-<down>") 'senator-next-tag)
   )
 
 (add-hook 'c-mode-common-hook 'blueteeth/cedet-hook)

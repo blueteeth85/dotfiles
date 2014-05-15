@@ -3,7 +3,21 @@
 (show-paren-mode 1)
 (setq show-paren-delay 0)
 
-(setq c-default-style "linux")
+
+(defun vlad-cc-style()
+  (c-set-style "linux")
+  (c-set-offset 'innamespace '0)
+  (c-set-offset 'inextern-lang '0)
+  (c-set-offset 'inline-open '0)
+  (c-set-offset 'label '*)
+  (c-set-offset 'case-label '*)
+  (c-set-offset 'access-label '/)
+  (setq c-basic-offset 2)
+  (setq tab-width 2)
+  (setq indent-tabs-mode nil)
+)
+
+(add-hook 'c++-mode-hook 'vlad-cc-style)
 
 (add-to-list 'load-path "~/.emacs.d/my-packages/highlight-parentheses/")
 (require 'highlight-parentheses)
