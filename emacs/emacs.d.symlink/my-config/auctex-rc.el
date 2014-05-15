@@ -18,41 +18,16 @@
 
 (setq TeX-PDF-mode t)
 
+(cond
+ ((string-equal system-type "darwin")   ; Mac OS X
+  (progn
+    (custom-set-variables
+     '(TeX-view-program-list (quote (("Skim" "/Applications/Skim.app/Contents/SharedSupport/displayline %n %o %b") ("Preview" "open -a Preview.app %o"))))
+     '(TeX-view-program-selection (quote (((output-dvi style-pstricks) "dvips and gv") (output-dvi "xdvi") (output-pdf "Skim") (output-html "xdg-open"))))
+     )
+    )
+  )
+ )
+
 (setq TeX-source-correlate-method 'synctex)
 (add-hook 'LaTeX-mode-hook 'TeX-source-correlate-mode)
-
-(require 'dbus)
-
-(defun un-urlify (fname-or-url)
-  "A trivial function that replaces a prefix of file:/// with just /."
-  (if (string= (substring fname-or-url 0 8) "file:///")
-      (substring fname-or-url 7)
-    fname-or-url))
-
-(defun th-evince-sync (file linecol &rest ignored)
-  (let* ((fname (url-unhex-string (un-urlify file)))
-         (buf (find-buffer-visiting fname))
-         (line (car linecol))
-         (col (cadr linecol)))
-    (if (null buf)
-        (message "[Synctex]: %s is not opened..." fname)
-      (switch-to-buffer buf)
-      (goto-line (car linecol))
-      (unless (= col -1)
-        (move-to-column col)))))
-
-(defvar *dbus-evince-signal* nil)
-
-(defun enable-evince-sync ()
-  (require 'dbus)
-  (when (and
-         (eq window-system 'x)
-         (fboundp 'dbus-register-signal))
-    (unless *dbus-evince-signal*
-      (setf *dbus-evince-signal*
-            (dbus-register-signal
-             :session nil "/org/gnome/evince/Window/0"
-             "org.gnome.evince.Window" "SyncSource"
-             'th-evince-sync)))))
-
-(add-hook 'LaTeX-mode-hook 'enable-evince-sync)

@@ -21,5 +21,6 @@
 (load "~/.emacs.d/my-config/ispell-rc.el")
 (load "~/.emacs.d/my-config/perl-rc.el")
 (load "~/.emacs.d/my-config/yasnippet-rc.el")
+(load "~/.emacs.d/my-config/auctex-rc.el")
 
 (load custom-file)
