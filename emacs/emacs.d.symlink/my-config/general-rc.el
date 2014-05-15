@@ -31,6 +31,7 @@
   (setq linum-format 'linum-format-func))
 
 (global-linum-mode 1)
+(global-visual-line-mode 1)
 
 ;; Color theme ;;
 (add-to-list 'custom-theme-load-path "~/.emacs.d/my-packages/emacs-color-theme-solarized")
