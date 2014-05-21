@@ -33,6 +33,9 @@
 (global-linum-mode 1)
 (global-visual-line-mode 1)
 
+;; don't let the cursor go into minibuffer prompt
+(setq minibuffer-prompt-properties (quote (read-only t point-entered minibuffer-avoid-prompt face minibuffer-prompt)))
+
 ;; Color theme ;;
 (add-to-list 'custom-theme-load-path "~/.emacs.d/my-packages/emacs-color-theme-solarized")
 ;(load-theme 'solarized-dark t)
