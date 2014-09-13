@@ -1,5 +1,0 @@
-if [[ "x$PS1" != "x" ]]
-then
-    return 0
-fi
-return 1

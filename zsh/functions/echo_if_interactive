@@ -1,4 +1,0 @@
-if is_interactive_shell
-then
-    echo "$*"
-fi
