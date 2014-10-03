@@ -35,3 +35,6 @@
 (depends-on "solarized-theme")
 (depends-on "smooth-scrolling")
 (depends-on "unbound")
+(depends-on "flatland-theme")
+(depends-on "clues-theme")
+(depends-on "flatui-theme")

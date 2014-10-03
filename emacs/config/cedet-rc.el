@@ -12,6 +12,7 @@
 (add-to-list 'semantic-default-submodes 'global-semantic-show-unmatched-syntax-mode)
 
 (semantic-mode 1)
+(require 'semantic/ia)
 
 (defun my-semantic-hook ()
   (imenu-add-to-menubar "TAGS"))
@@ -36,8 +37,9 @@
 (ecb-toggle-compile-window)
 
 ;; auto-complete
+(ac-config-default)
+
 (global-auto-complete-mode)
-(add-to-list 'ac-dictionary-directories "~/.emacs.d/packages/auto-complete/dict")
 (setq ac-auto-start nil)
 (setq ac-use-menu-map t)
 (setq ac-menu-height 20)
