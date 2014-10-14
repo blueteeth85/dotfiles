@@ -12,7 +12,9 @@
 (setq minibuffer-prompt-properties (quote (read-only t point-entered minibuffer-avoid-prompt face minibuffer-prompt)))
 
 ;; Color theme ;;
-(load-theme 'flatui t)
+(when (display-graphic-p)
+  (load-theme 'flatui t)
+)
 
 ;; iedit
 (defun iedit-dwim (arg)
