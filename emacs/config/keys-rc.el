@@ -23,7 +23,7 @@
 (add-hook 'c-mode-common-hook 'alexott/c-mode-cedet-hook)
 
 ;; ecb
-
+(global-set-key [f3] 'ecb-activate)
 (global-set-key [f7] 'ecb-toggle-compile-window)
 (global-set-key (kbd "M-<kp-enter>") 'ecb-toggle-ecb-windows)
 (global-set-key (kbd "M-<kp-divide>") 'ecb-goto-window-edit1)
