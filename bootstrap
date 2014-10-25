@@ -22,6 +22,18 @@ echo ' '
 link_files "$DOTFILES_ROOT/bash/.bashrc" "$HOME/.bashrc"
 link_files "$DOTFILES_ROOT/bash/.dir_colors" "$HOME/.dir_colors"
 
+echo ' '
+echo ' Link inputrc'
+echo ' '
+
+link_files "$DOTFILES_ROOT/inputrc" "$HOME/.inputrc"
+
+echo ' '
+echo ' Linking stumpwm config'
+echo ' '
+
+link_files "$DOTFILES_ROOT/stumpwmrc" "$HOME/.stumpwmrc"
+
 
 echo ' '
 echo ' Getting emacs packages'

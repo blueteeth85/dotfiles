@@ -13,6 +13,19 @@
 (setq shell-file-name "bash")
 (setq shell-command-switch "-c")
 
+;; useful for emacsclient
+
+(add-hook 'server-switch-hook
+	  (lambda ()
+	    (when (current-local-map)
+	      (use-local-map (copy-keymap (current-local-map))))
+	    (when server-buffer-clients
+	      (local-set-key (kbd "<f6>") 'server-edit)
+	      )
+	    )
+	  )
+
+
 ;; Basic config ;;
 (load "~/.emacs.d/config/window-rc.el")
 (load "~/.emacs.d/config/frame-rc.el")

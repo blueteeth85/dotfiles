@@ -1,0 +1,99 @@
+;; -*-lisp-*-
+
+(in-package :stumpwm)
+
+(defmacro def-run-or-raise-command (cmd prop)
+  (let ((cmd-str (string-downcase (symbol-name cmd))))
+    `(defcommand ,cmd () ()
+       (run-or-raise ,cmd-str ,prop))))
+
+(run-shell-command "display -window root /home/ssankara/Desktop/wp.jpg")
+
+
+(setf *mouse-focus-policy* :click) ;; :click, :ignore, :sloppy
+
+
+(setf *maxsize-border-width* 1)
+(setf *transient-border-width* 1)
+(setf *normal-border-width* 1)
+(setf *window-border-style* :tight)
+
+(setf *mode-line-foreground-color* "gray")
+(setf *mode-line-border-color* "black")
+(setf *mode-line-pad-y* 2)
+(setf *mode-line-background-color* "black")
+(setf *mode-line-position* :top)
+(setf *mode-line-border-width* 2)
+
+
+(setf *message-window-padding* 2)
+(setf *input-window-gravity* :center)
+
+(set-font "-*-terminus-*-r-*-*-14-*-*-*-*-*-iso8859-1")
+
+;; Turn on the modeline
+(if (not (head-mode-line (current-head)))
+     (toggle-mode-line (current-screen) (current-head)))
+
+;; Show time, cpu usage and network traffic in the modeline
+(setf *screen-mode-line-format*
+      (list 
+       '(:eval (run-shell-command "date '+%a %h %d %I:%M %p' | tr -d [:cntrl:]" t)) 
+       " | "
+       "Volume: " 
+       '(:eval (run-shell-command "amixer get Master | grep 'Front Left:' | cut -d ' ' -f 7 | cut -d '[' -f 2 | cut -d ']' -f 1 | tr -d [:cntrl:]" t)) 
+       " | "
+       "%W")
+      )
+
+
+;; shell program used by `run-shell-command' (`sh' by default, which is *not*
+;; `bash' nor `zsh')
+(setq *shell-program* (stumpwm::getenv "SHELL"))  ; `getenv' is not exported
+
+; --- stumpwm command definitions -------------------------------
+
+(def-run-or-raise-command google-chrome '(:class "Google-chrome"))
+(def-run-or-raise-command thunderbird '(:class "thunderbird"))
+(defcommand gnome-terminal () () (run-shell-command "gnome-terminal"))
+
+(define-key *root-map* (kbd "s") "hsplit")
+(define-key *root-map* (kbd "S") "vsplit")
+(define-key *root-map* (kbd "q") "only")
+(define-key *root-map* (kbd "b") "google-chrome")
+(define-key *root-map* (kbd "c") "gnome-terminal")
+(define-key *root-map* (kbd "e") "emacs")
+(define-key *root-map* (kbd "m") "thunderbird")
+(define-key *root-map* (kbd "l") "mode-line")
+
+
+;;** Prefix Key
+
+;; I tend to place "system-wide" window manager shortcut keys consistently
+;; on Super-<something> rather than the horrible defaults that can get in
+;; the way of Emacs' use (various Control and Alt bindings).
+
+;; same as `keycode 133 = F20' in `~/.Xmodmap', `133' (TO BE CHECKED WITH
+;; `xev') being the left "Windows" key, aka `Super_L'
+
+(set-prefix-key (kbd "F20"))
+
+;;; A command to create volume-control commands
+(defcommand amixer-Master-5- () () (echo-string (current-screen) "Master 5- ") (run-shell-command "amixer sset Master 5-"))
+(defcommand amixer-Master-5+ () () (echo-string (current-screen) "Master 5+ ") (run-shell-command "amixer sset Master 5+"))
+(defcommand amixer-Master-toggle () () (echo-string (current-screen) "Master toggle ") (run-shell-command "amixer sset Master toggle"))
+(defcommand dmenu-run () () (run-shell-command "dmenu_run"))
+
+(define-key *top-map* (kbd "s-j")   "amixer-Master-5-")
+(define-key *top-map* (kbd "s-k")   "amixer-Master-5+")
+(define-key *top-map* (kbd "s-m")          "amixer-Master-toggle")
+(define-key *top-map* (kbd "s-Left") "resize -40 0")
+(define-key *top-map* (kbd "s-Right") "resize 40 0")
+(define-key *top-map* (kbd "s-Up") "resize 0 -40")
+(define-key *top-map* (kbd "s-Down") "resize 0 40")
+(define-key *top-map* (kbd "s-space") "dmenu-run")
+
+(defun show-key-seq (key seq val)
+  (message (print-key-seq (reverse seq))))
+(add-hook *key-press-hook* 'show-key-seq)
+
