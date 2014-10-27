@@ -32,9 +32,9 @@
 (setq ecb-compile-window-height 12)
 (setq ecb-fix-window-size 'width)
 (setq ecb-layout-name "my-right")
-(ecb-activate)
-(ecb-hide-ecb-windows)
-(ecb-toggle-compile-window)
+;(ecb-activate)
+;(ecb-hide-ecb-windows)
+;(ecb-toggle-compile-window)
 
 ;; auto-complete
 (ac-config-default)
