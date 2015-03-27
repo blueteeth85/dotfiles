@@ -39,8 +39,5 @@
 (depends-on "flatland-theme")
 (depends-on "clues-theme")
 (depends-on "flatui-theme")
-<<<<<<< HEAD
 (depends-on "rect-mark")
-=======
 (depends-on "mediawiki")
->>>>>>> dcdb29ef901ab81e2f4ff7658760d3b5b1f7ab79
