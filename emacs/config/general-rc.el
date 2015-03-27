@@ -12,6 +12,7 @@
 (setq minibuffer-prompt-properties (quote (read-only t point-entered minibuffer-avoid-prompt face minibuffer-prompt)))
 
 ;; Color theme ;;
+
 (load-theme 'flatui t)
 
 ;; iedit
@@ -37,6 +38,7 @@
 (setq ido-use-filename-at-point 'guess)
 (setq ido-create-new-buffer 'always)
 (setq ido-ignore-extensions t)
+(add-to-list 'completion-ignored-extensions ".d")
 (ido-mode 1) 
 
 

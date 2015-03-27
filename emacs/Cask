@@ -1,3 +1,4 @@
+(source marmalade)
 (source gnu)
 (source melpa)
 
@@ -38,3 +39,4 @@
 (depends-on "flatland-theme")
 (depends-on "clues-theme")
 (depends-on "flatui-theme")
+(depends-on "rect-mark")
