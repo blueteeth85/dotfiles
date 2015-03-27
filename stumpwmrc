@@ -23,7 +23,7 @@
 (setf *mode-line-border-width* 2)
 (setf *message-window-padding* 2)
 (setf *input-window-gravity* :center)
-(set-font "-*-terminus-*-r-*-*-14-*-*-*-*-*-iso8859-1")
+(set-font "-*-terminus-*-r-*-*-12-*-*-*-*-*-iso8859-1")
 
 ;; Turn on the modeline
 (if (not (head-mode-line (current-head)))
@@ -32,7 +32,7 @@
 ;; Show time, cpu usage and network traffic in the modeline
 (setf *screen-mode-line-format*
       (list 
-       '(:eval (run-shell-command "date '+%a %h %d %I:%M %p' | tr -d [:cntrl:]" t)) 
+       '(:eval (run-shell-command "date '+%a %h %d %I:%M %p' | tr -d '[:cntrl:]'" t)) 
        " | "
        "Volume: " 
        '(:eval (run-shell-command "amixer get Master | grep 'Front Left:' | cut -d ' ' -f 7,9 | tr -d '\[\][:cntrl:]' | sed -e 's/ on//' -e 's/ off/ mute/' " t)) 
@@ -50,7 +50,7 @@
 ; Command definitions
 
 (defcommand emacsclient () () (run-or-raise "emacsclient -c" '(:class "Emacs")))
-(def-run-or-raise-command google-chrome '(:class "Google-chrome"))
+(def-run-or-raise-command firefox '(:class "Firefox"))
 (def-run-or-raise-command thunderbird '(:class "thunderbird"))
 (defcommand gnome-terminal () () (run-shell-command "gnome-terminal"))
 (defcommand dmenu-run () () (run-shell-command "dmenu_run"))
@@ -62,7 +62,7 @@
 (define-key *root-map* (kbd "s") "hsplit")
 (define-key *root-map* (kbd "S") "vsplit")
 (define-key *root-map* (kbd "q") "only")
-(define-key *root-map* (kbd "b") "google-chrome")
+(define-key *root-map* (kbd "b") "firefox")
 (define-key *root-map* (kbd "c") "gnome-terminal")
 (define-key *root-map* (kbd "e") "emacsclient")
 (define-key *root-map* (kbd "m") "thunderbird")

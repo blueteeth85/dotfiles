@@ -44,10 +44,15 @@
 (load "~/.emacs.d/config/yasnippet-rc.el")
 (load "~/.emacs.d/config/auctex-rc.el")
 
-(load "~/.localemacs")
 (load "~/.emacs.d/config/shell-rc.el")
 
 ;; keybindings
 (load "~/.emacs.d/config/keys-rc.el")
+
+(setq ediff-window-setup-function 'ediff-setup-windows-plain)
+
+(setq ediff-split-window-function (if (> (frame-width) 150) 'split-window-horizontally 'split-window-vertically))
+
+(load "~/.localemacs")
 
 (load custom-file)
