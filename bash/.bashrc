@@ -53,3 +53,7 @@ if ! shopt -oq posix; then
 	. /etc/bash_completion
     fi
 fi
+
+
+# set hostname
+export HOSTNAME=`uname -n`
