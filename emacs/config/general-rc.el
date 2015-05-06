@@ -13,7 +13,8 @@
 
 ;; Color theme ;;
 
-(load-theme 'flatui t)
+;(load-theme 'flatui t)
+(load-theme 'solarized-dark t)
 
 ;; iedit
 (defun iedit-dwim (arg)

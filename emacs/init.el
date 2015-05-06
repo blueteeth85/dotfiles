@@ -20,7 +20,7 @@
 	    (when (current-local-map)
 	      (use-local-map (copy-keymap (current-local-map))))
 	    (when server-buffer-clients
-	      (local-set-key (kbd "<f6>") 'server-edit)
+	      (local-set-key (kbd "<f1>") 'server-edit)
 	      )
 	    )
 	  )

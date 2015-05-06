@@ -83,5 +83,3 @@
 (global-set-key (kbd "M-[") 'align-comments)
 
 
-;; shell
-(global-set-key [f1] 'shell)
