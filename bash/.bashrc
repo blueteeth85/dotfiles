@@ -1,5 +1,5 @@
 # bash params
-export TERM=xterm-256color
+export TERM=xterm
 export CLICOLOR=1
 
 HISTCONTROL=ignoreboth
