@@ -53,7 +53,7 @@ the line, to capture multiline input. (This only has effect if
 
 ;; not sure why, but comint needs to be reloaded from the source (*not*
 ;; compiled) elisp to make the above advice stick.
-(load "comint.el.gz")
+;; (load "comint.el.gz")
 
 
 ;; XXX begin automatically_close_completions_in_emacs_shell_comint_mode.txt XXX
