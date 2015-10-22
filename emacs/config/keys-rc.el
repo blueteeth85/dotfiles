@@ -80,6 +80,7 @@
 ;; programming
 
 (global-set-key [f4] 'compile)
+(global-set-key (kbd "M-]") 'align-current)
 (global-set-key (kbd "M-[") 'align-comments)
 
 

@@ -41,3 +41,4 @@
 (depends-on "flatui-theme")
 (depends-on "rect-mark")
 (depends-on "mediawiki")
+(depends-on "php-mode")

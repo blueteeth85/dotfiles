@@ -16,9 +16,18 @@
   (setq c-basic-offset 2)
   (setq tab-width 2)
   (setq indent-tabs-mode nil)
-)
+  )
 
 (add-hook 'c++-mode-hook 'vlad-cc-style)
+
+(defun my-perl-style()
+  (setq cperl-extra-newline-before-brace t)
+  (setq cperl-indent-parens-as-block t)
+  (setq cperl-brace-offset -2)
+  (setq cperl-merge-trailing-else nil)
+  )
+
+(add-hook 'cperl-mode-hook 'my-perl-style)
 
 (add-hook 'prog-mode-hook 'highlight-parentheses-mode)
 
