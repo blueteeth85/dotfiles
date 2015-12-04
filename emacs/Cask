@@ -41,3 +41,5 @@
 (depends-on "rect-mark")
 (depends-on "mediawiki")
 (depends-on "php-mode")
+(depends-on "apache-mode")
+(depends-on "jdee")

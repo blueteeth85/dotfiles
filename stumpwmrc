@@ -50,8 +50,7 @@
 ; Command definitions
 
 (defcommand emacsclient () () (run-or-raise "emacsclient -c" '(:class "Emacs")))
-(def-run-or-raise-command firefox '(:class "Firefox"))
-(def-run-or-raise-command thunderbird '(:class "thunderbird"))
+(defcommand chrome () () (run-or-raise "google-chrome" '(:class "chrome")))
 (defcommand gnome-terminal () () (run-shell-command "gnome-terminal"))
 (defcommand dmenu-run () () (run-shell-command "dmenu_run"))
 
@@ -64,10 +63,9 @@
 (define-key *root-map* (kbd "R") "iresize")
 (define-key *root-map* (kbd "r") "remove")
 (define-key *root-map* (kbd "q") "only")
-(define-key *root-map* (kbd "b") "firefox")
+(define-key *root-map* (kbd "b") "chrome")
 (define-key *root-map* (kbd "c") "gnome-terminal")
 (define-key *root-map* (kbd "e") "emacsclient")
-(define-key *root-map* (kbd "m") "thunderbird")
 (define-key *root-map* (kbd "l") "mode-line")
 
 (define-key *top-map* (kbd "s-Left") "resize -40 0")
