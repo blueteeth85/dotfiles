@@ -82,4 +82,4 @@
    (car (occur-read-primary-args))))
 
 
-
+(fa-config-default)

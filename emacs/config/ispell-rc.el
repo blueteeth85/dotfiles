@@ -9,10 +9,10 @@
 
 (add-hook 'message-mode-hook 'turn-on-flyspell)
 (add-hook 'text-mode-hook 'turn-on-flyspell)
-(add-hook 'nxml-mode-hook 'turn-on-flyspell)
-(add-hook 'texinfo-mode-hook 'turn-on-flyspell)
-(add-hook 'TeX-mode-hook 'turn-on-flyspell)
-(add-hook 'LaTeX-mode-hook 'turn-on-flyspell)
+;; (add-hook 'nxml-mode-hook 'turn-on-flyspell)
+;; (add-hook 'texinfo-mode-hook 'turn-on-flyspell)
+;; (add-hook 'TeX-mode-hook 'turn-on-flyspell)
+;; (add-hook 'LaTeX-mode-hook 'turn-on-flyspell)
 
 ;; (add-hook 'c-mode-common-hook 'flyspell-prog-mode)
 ;; (add-hook 'lisp-mode-hook 'flyspell-prog-mode)

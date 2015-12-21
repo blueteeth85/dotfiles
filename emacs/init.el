@@ -37,7 +37,8 @@
 (load "~/.emacs.d/config/prog-rc.el")
 
 ;; Load other packages' config;;
-(load "~/.emacs.d/config/cedet-rc.el")
+(load "~/.emacs.d/config/helm-rc.el")
+;;(load "~/.emacs.d/config/global-rc.el")
 (load "~/.emacs.d/config/doxymacs-rc.el")
 (load "~/.emacs.d/config/ispell-rc.el")
 (load "~/.emacs.d/config/perl-rc.el")
