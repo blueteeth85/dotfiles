@@ -76,3 +76,13 @@
 
 (add-to-list 'projectile-other-file-alist '("cc" "h" "hpp" "hh"))
 (add-to-list 'projectile-other-file-alist '("h" "c" "cpp" "cc"))
+
+(require 'eassist)
+(setq-default ecb-tip-of-the-day nil)
+(setq ecb-show-sources-in-directories-buffer 'always)
+(setq ecb-compile-window-height 12)
+(setq ecb-fix-window-size 'width)
+(setq ecb-layout-name "my-right")
+;;(ecb-activate)
+;;(ecb-hide-ecb-windows)
+;;(ecb-toggle-compile-window)

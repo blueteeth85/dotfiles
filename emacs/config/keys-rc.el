@@ -59,16 +59,31 @@
 (define-key helm-gtags-mode-map (kbd "C-c <") 'helm-gtags-previous-history)
 (define-key helm-gtags-mode-map (kbd "C-c >") 'helm-gtags-next-history)
 
-;; helm-semantic
+;; function-args keymap changes
+(define-key function-args-mode-map (kbd "M-o") nil)
+(define-key function-args-mode-map (kbd "M-n") nil)
+
+
+;; helm-semantic-autocomplete-etc
 (global-set-key (kbd "M-<return>") 'company-complete)
 (defun my-c-mode-semantic-hook ()
   (local-set-key "\C-ce" 'helm-semantic)
-  (local-set-key "\C-xt" 'projectile-find-other-file)
+  (local-set-key "\C-xt" 'eassist-switch-h-cpp)
   (local-set-key "\C-cj" 'semantic-ia-fast-jump)
   (local-set-key "\C-c\C-r" 'semantic-symref)
 )
 (add-hook 'c-mode-common-hook 'my-c-mode-semantic-hook)
 
+;; ecb
+
+(global-set-key [f3] 'ecb-activate)
+(global-set-key [f7] 'ecb-toggle-compile-window)
+(global-set-key (kbd "M-<kp-enter>") 'ecb-toggle-ecb-windows)
+(global-set-key (kbd "M-<kp-divide>") 'ecb-goto-window-edit1)
+(global-set-key (kbd "M-<kp-multiply>") 'ecb-goto-window-directories)
+(global-set-key (kbd "M-<kp-subtract>") 'ecb-goto-window-methods)
+(global-set-key (kbd "M-<kp-decimal>") 'ecb-goto-window-history)
+(global-set-key (kbd "M-<kp-add>") 'ecb-goto-window-compilation)
 
 ;; windows
 
@@ -77,6 +92,7 @@
 (global-set-key (kbd "M-4") (lambda () (interactive) (split-window-horizontally) (balance-windows))) ; split pane left/right
 (global-set-key (kbd "M-5") (lambda () (interactive) (split-window-vertically) (balance-windows))) ; split pane top/bottom
 (global-set-key (kbd "M-2") (lambda () (interactive) (delete-window) (balance-windows))) ; close current pane
+(global-unset-key (kbd "M-o"))
 (global-set-key (kbd "M-o") 'other-window) ; cursor to other pane
 (global-set-key (kbd "M-f") 'other-frame) ; cursor to other frame
 
@@ -115,3 +131,7 @@
 
 
 
+(global-set-key (kbd "C-x r SPC") 'rm-set-mark)
+(global-set-key (kbd "C-x r C-x") 'rm-exchange-point-and-mark)
+(global-set-key (kbd "C-x r C-w") 'rm-kill-region)
+(global-set-key (kbd "C-x r M-w") 'rm-kill-ring-save)
