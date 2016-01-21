@@ -13,7 +13,8 @@
 
 ;; Color theme ;;
 
-(load-theme 'solarized-light t)
+(add-to-list 'custom-theme-load-path "~/.emacs.d/site-lisp")
+(load-theme 'solarized-dark t)
 
 ;; enable recent files mode.
 (recentf-mode t)
