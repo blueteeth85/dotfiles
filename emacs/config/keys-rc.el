@@ -135,3 +135,7 @@
 (global-set-key (kbd "C-x r C-x") 'rm-exchange-point-and-mark)
 (global-set-key (kbd "C-x r C-w") 'rm-kill-region)
 (global-set-key (kbd "C-x r M-w") 'rm-kill-ring-save)
+
+
+(global-set-key [remap query-replace] 'anzu-query-replace)
+(global-set-key [remap query-replace-regexp] 'anzu-query-replace-regexp)

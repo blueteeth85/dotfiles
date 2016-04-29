@@ -47,3 +47,7 @@
 (depends-on "js2-mode")
 (depends-on "json-mode")
 (depends-on "rect-mark")
+(depends-on "spaceline")
+(depends-on "anzu")
+(depends-on "diminish")
+(depends-on "react-snippets")
