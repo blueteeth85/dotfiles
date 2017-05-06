@@ -11,3 +11,5 @@
 (setq spaceline-minor-modes-p nil)
 
 (global-anzu-mode +1)
+
+

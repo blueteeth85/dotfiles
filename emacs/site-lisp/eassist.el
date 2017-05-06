@@ -118,11 +118,12 @@
 ;;;###autoload
 (defvar eassist-header-switches '(("h" . ("cpp" "cc" "c"))
 			     ("hpp" . ("cpp" "cc"))
+			     ("hh" . ("cc"))
 			     ("cpp" . ("h" "hpp"))
 			     ("c" . ("h"))
 			     ("C" . ("H"))
 			     ("H" . ("C" "CPP" "CC"))
-			     ("cc" . ("h" "hpp")))
+			     ("cc" . ("h" "hpp" "hh")))
 "This variable defines possible switches for `eassist-switch-h-cpp' function.
 Its format is list of (from . (to1 to2 to3...)) elements.  From and toN are
 strings which are extentions of the files.")

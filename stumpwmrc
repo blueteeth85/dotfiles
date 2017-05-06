@@ -13,6 +13,8 @@
 (setf *maxsize-border-width* 2)
 (setf *transient-border-width* 1)
 (setf *normal-border-width* 2)
+(setf *float-window-border* 1)
+(setf *float-window-title-height* 20)
 (setf *window-border-style* :thin)
 (set-focus-color "cyan")
 (setf *mode-line-foreground-color* "gray")
@@ -23,6 +25,7 @@
 (setf *mode-line-border-width* 2)
 (setf *message-window-padding* 2)
 (setf *input-window-gravity* :center)
+(setf *message-window-gravity* :bottom-right)
 (set-font "-*-terminus-*-r-*-*-12-*-*-*-*-*-iso8859-1")
 
 ;; Turn on the modeline
@@ -30,15 +33,7 @@
      (toggle-mode-line (current-screen) (current-head)))
 
 ;; Show time, cpu usage and network traffic in the modeline
-(setf *screen-mode-line-format*
-      (list 
-       '(:eval (run-shell-command "date '+%a %h %d %I:%M %p' | tr -d '[:cntrl:]'" t)) 
-       " | "
-       "Volume: " 
-       '(:eval (run-shell-command "amixer get Master | grep 'Front Left:' | cut -d ' ' -f 7,9 | tr -d '\[\][:cntrl:]' | sed -e 's/ on//' -e 's/ off/ mute/' " t)) 
-       " | "
-       "%W")
-      )
+(setf *screen-mode-line-format* (list '(:eval (run-shell-command "date '+%a %h %d %I:%M %p' | tr -d '[:cntrl:]'" t)) " | Volume: " '(:eval (run-shell-command "amixer get Master | grep 'Front Left:' | cut -d ' ' -f 7,9 | tr -d '\[\][:cntrl:]' | sed -e 's/ on//' -e 's/ off/ mute/' " t)) " | %W ^>| %g"))
 
 
 ;; shell program used by `run-shell-command' (`sh' by default, which is *not*
@@ -54,14 +49,12 @@
 (defcommand gnome-terminal () () (run-shell-command "gnome-terminal"))
 (defcommand dmenu-run () () (run-shell-command "dmenu_run"))
 
-(load "~/.localstumpwmrc")
-
 ; keys
 
 (define-key *root-map* (kbd "s") "hsplit")
 (define-key *root-map* (kbd "S") "vsplit")
 (define-key *root-map* (kbd "R") "iresize")
-(define-key *root-map* (kbd "r") "remove")
+(define-key *root-map* (kbd "r") "remove-split")
 (define-key *root-map* (kbd "q") "only")
 (define-key *root-map* (kbd "b") "chrome")
 (define-key *root-map* (kbd "c") "gnome-terminal")
@@ -84,4 +77,9 @@
 (load "~/.localstumpwmrc" :if-does-not-exist nil)
 
 
-
+(when *initializing*
+  (grename "First")
+  (gnewbg "Second")
+  (gnewbg "Third")
+  (gnewbg-float "Floating")
+)

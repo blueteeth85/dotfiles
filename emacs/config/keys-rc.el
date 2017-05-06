@@ -60,8 +60,8 @@
 (define-key helm-gtags-mode-map (kbd "C-c >") 'helm-gtags-next-history)
 
 ;; function-args keymap changes
-(define-key function-args-mode-map (kbd "M-o") nil)
-(define-key function-args-mode-map (kbd "M-n") nil)
+;(define-key function-args-mode-map (kbd "M-o") nil)
+;(define-key function-args-mode-map (kbd "M-n") nil)
 
 
 ;; helm-semantic-autocomplete-etc
@@ -82,7 +82,7 @@
 (global-set-key (kbd "M-<kp-divide>") 'ecb-goto-window-edit1)
 (global-set-key (kbd "M-<kp-multiply>") 'ecb-goto-window-directories)
 (global-set-key (kbd "M-<kp-subtract>") 'ecb-goto-window-methods)
-(global-set-key (kbd "M-<kp-decimal>") 'ecb-goto-window-history)
+(global-set-key (kbd "M-<kp-delete>") 'ecb-goto-window-history)
 (global-set-key (kbd "M-<kp-add>") 'ecb-goto-window-compilation)
 
 ;; windows

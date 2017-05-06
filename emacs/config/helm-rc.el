@@ -39,8 +39,6 @@
   (if (boundp 'helm-alive-p)
       (symbol-value 'helm-alive-p)))
 
-(add-to-list 'golden-ratio-inhibit-functions 'pl/helm-alive-p)
-
 (add-to-list 'helm-sources-using-default-as-input 'helm-source-man-pages)
 
 ;;; Save current position to mark ring
@@ -82,7 +80,7 @@
 (setq ecb-show-sources-in-directories-buffer 'always)
 (setq ecb-compile-window-height 12)
 (setq ecb-fix-window-size 'width)
-(setq ecb-layout-name "my-right")
+(setq ecb-layout-name "my-right-analyse-2")
 ;;(ecb-activate)
 ;;(ecb-hide-ecb-windows)
 ;;(ecb-toggle-compile-window)
