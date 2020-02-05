@@ -42,3 +42,4 @@
 (depends-on "auctex")
 (depends-on "sql-indent")
 (depends-on "markdown-mode")
+(depends-on "kaolin-themes")

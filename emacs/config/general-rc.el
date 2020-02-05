@@ -14,7 +14,7 @@
 ;; Color theme ;;
 
 (add-to-list 'custom-theme-load-path "~/.emacs.d/site-lisp")
-;(load-theme 'fogus t)
+(load-theme 'kaolin-dark t)
 
 ;; enable recent files mode.
 (recentf-mode t)
