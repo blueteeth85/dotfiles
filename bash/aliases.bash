@@ -1,4 +1,6 @@
 alias reload!='. ~/.bashrc'
 
-alias ls='ls --color=auto'
+if [[ $OSTYPE == "linux-gnu" ]]; then
+	alias ls='ls --color=auto'
+fi
 

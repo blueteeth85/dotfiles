@@ -14,27 +14,6 @@ link_files () {
     fi
 }
 
-
-echo ' '
-echo '  Linking bash config'
-echo ' '
-
-link_files "$DOTFILES_ROOT/bash/.bashrc" "$HOME/.bashrc"
-link_files "$DOTFILES_ROOT/bash/.dir_colors" "$HOME/.dir_colors"
-
-echo ' '
-echo ' Link inputrc'
-echo ' '
-
-link_files "$DOTFILES_ROOT/inputrc" "$HOME/.inputrc"
-
-echo ' '
-echo ' Linking stumpwm config'
-echo ' '
-
-link_files "$DOTFILES_ROOT/stumpwmrc" "$HOME/.stumpwmrc"
-
-
 echo ' '
 echo ' Getting emacs packages'
 echo ' '
@@ -50,6 +29,23 @@ link_files "$DOTFILES_ROOT/emacs/Cask" "$HOME/.emacs.d/Cask"
 cd ~/.emacs.d && $HOME/.cask/bin/cask install
 link_files "$DOTFILES_ROOT/emacs/site-lisp" "$HOME/.emacs.d/site-lisp"
 
+
+echo ' '
+echo '  Linking bash config'
+echo ' '
+
+link_files "$DOTFILES_ROOT/bash/.bashrc" "$HOME/.bashrc"
+link_files "$DOTFILES_ROOT/bash/.profile" "$HOME/.profile"
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+	link_files "$DOTFILES_ROOT/bash/.dir_colors" "$HOME/.dir_colors"
+
+	echo ' '
+	echo ' Link inputrc'
+	echo ' '
+
+	link_files "$DOTFILES_ROOT/inputrc" "$HOME/.inputrc"
+fi
+
 echo ' '
 echo ' Linking emacs config'
 
@@ -64,12 +60,8 @@ link_files "$DOTFILES_ROOT/emacs/init.el" "$HOME/.emacs.d/init.el"
 touch "$HOME/.emacs.d/custom.el"
 
 echo ' '
-echo ' Setting terminal color palette'
-
-gconftool-2 -t string -s /apps/gnome-terminal/profiles/Default/background_color '#ECECF0F0F1F1'
-gconftool-2 -t string -s /apps/gnome-terminal/profiles/Default/bold_color '#9393A1A1A1A1'
-gconftool-2 -t string -s /apps/gnome-terminal/profiles/Default/foreground_color '#000000000000'
-gconftool-2 -t string -s /apps/gnome-terminal/profiles/Default/palette '#444444444444:#AFAF00000000:#000087870000:#AFAF5F5E0000:#00005F5EAFAF:#878700008787:#000087878787:#EEEEEEEEEEEE:#444444444444:#AFAF00000000:#000087870000:#AFAF5F5E0000:#00005F5EAFAF:#878700008787:#000087878787:#EEEEEEEEEEEE'
+echo ' Linking stumpwm config'
+link_files "$DOTFILES_ROOT/stumpwmrc" "$HOME/.stumpwmrc"
 
 echo ' '
 echo '  All installed!'

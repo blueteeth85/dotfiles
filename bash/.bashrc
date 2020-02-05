@@ -21,9 +21,6 @@ config_files=(${config_files[@]/*\/functions.bash/})
 # load all functions
 source $dotfiles/functions.bash
 
-# load additional paths
-source $dotfiles/path.bash
-
 # load everything else
 for file in "${config_files[@]}"
 do

@@ -31,8 +31,6 @@
 (define-key minibuffer-local-map (kbd "M-p") 'helm-minibuffer-history)
 (define-key minibuffer-local-map (kbd "M-n") 'helm-minibuffer-history)
 
-(define-key global-map [remap find-tag] 'helm-etags-select)
-
 (define-key global-map [remap list-buffers] 'helm-buffers-list)
 
 ;; rebind useless C-x C-r to helm-recentf
@@ -49,15 +47,6 @@
 
 ;; From helm-swoop to helm-multi-swoop-all
 (define-key helm-swoop-map (kbd "M-i") 'helm-multi-swoop-all-from-helm-swoop)
-
-;; helm-gtags
-
-(define-key helm-gtags-mode-map (kbd "C-c g a") 'helm-gtags-tags-in-this-function)
-(define-key helm-gtags-mode-map (kbd "C-j") 'helm-gtags-select)
-(define-key helm-gtags-mode-map (kbd "M-.") 'helm-gtags-dwim)
-(define-key helm-gtags-mode-map (kbd "M-,") 'helm-gtags-pop-stack)
-(define-key helm-gtags-mode-map (kbd "C-c <") 'helm-gtags-previous-history)
-(define-key helm-gtags-mode-map (kbd "C-c >") 'helm-gtags-next-history)
 
 ;; function-args keymap changes
 ;(define-key function-args-mode-map (kbd "M-o") nil)
@@ -94,13 +83,6 @@
 (global-set-key (kbd "M-2") (lambda () (interactive) (delete-window) (balance-windows))) ; close current pane
 (global-unset-key (kbd "M-o"))
 (global-set-key (kbd "M-o") 'other-window) ; cursor to other pane
-(global-set-key (kbd "M-f") 'other-frame) ; cursor to other frame
-
-(global-set-key (kbd "S-C-<left>") 'shrink-window-horizontally)
-(global-set-key (kbd "S-C-<right>") 'enlarge-window-horizontally)
-(global-set-key (kbd "S-C-<down>") 'shrink-window)
-(global-set-key (kbd "S-C-<up>") 'enlarge-window)
-
 
 ;; buffer
 (define-key global-map [(ctrl left)] 'previous-user-buffer)
@@ -119,6 +101,7 @@
 (define-key global-map [(meta left)] 'backward-word)
 (define-key global-map [(meta down)] 'forward-paragraph)
 (define-key global-map [(meta up)] 'backward-paragraph)
+
 ;; get rid of `find-file-read-only' and replace it with something
 ;; more useful.
 (global-set-key (kbd "<f8>") 'execute-extended-command)
@@ -136,6 +119,7 @@
 (global-set-key (kbd "C-x r C-w") 'rm-kill-region)
 (global-set-key (kbd "C-x r M-w") 'rm-kill-ring-save)
 
-
+(global-set-key (kbd "M-n") 'forward-paragraph)
+(global-set-key (kbd "M-p") 'backward-paragraph)
 (global-set-key [remap query-replace] 'anzu-query-replace)
 (global-set-key [remap query-replace-regexp] 'anzu-query-replace-regexp)

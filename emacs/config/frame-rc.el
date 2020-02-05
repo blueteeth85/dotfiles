@@ -1,8 +1,8 @@
 ;; Windows ;;
 
-(menu-bar-mode 0)
-(tool-bar-mode 0)
-(scroll-bar-mode 0)
+(if (functionp 'menu-bar-mode) (menu-bar-mode 0))
+(if (functionp 'tool-bar-mode) (tool-bar-mode 0))
+(if (functionp 'scroll-bar-mode) (scroll-bar-mode 0))
 
 (require 'spaceline-config)
 (spaceline-spacemacs-theme)

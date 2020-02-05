@@ -45,7 +45,7 @@ Emacs buffers are those whose name starts with *."
     (while (and (not (string-match "^*" (buffer-name))) (< i 50))
       (setq i (1+ i)) (previous-buffer) )))
 
-(global-smartscan-mode 1)
+;(global-smartscan-mode 1)
 
 (defun push-mark-no-activate ()
   "Pushes `point' to `mark-ring' and does not activate the region

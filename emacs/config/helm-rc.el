@@ -9,15 +9,6 @@
 (require 'helm)
 (require 'helm-config)
 (require 'helm-grep)
-(require 'helm-gtags)
-
-
-;; Enable helm-gtags-mode
-(add-hook 'dired-mode-hook 'helm-gtags-mode)
-(add-hook 'eshell-mode-hook 'helm-gtags-mode)
-(add-hook 'c-mode-common-hook 'helm-gtags-mode)
-(add-hook 'c++-mode-hook 'helm-gtags-mode)
-(add-hook 'asm-mode-hook 'helm-gtags-mode)
 
 
 (when (executable-find "curl")
@@ -51,29 +42,12 @@
 (setq helm-swoop-split-direction 'split-window-vertically)
 (setq helm-swoop-speed-or-color t)
 
-(setq
- helm-gtags-ignore-case t
- helm-gtags-auto-update t
- helm-gtags-use-input-at-cursor t
- helm-gtags-pulse-at-cursor t
- helm-gtags-prefix-key "\C-cg"
- helm-gtags-suggested-key-mapping t
- )
-
 (helm-mode 1)
 
 ;; company mode
 (require 'company)
 (add-to-list 'company-backends 'company-c-headers)
 (add-hook 'after-init-hook 'global-company-mode)
-
-(projectile-global-mode)
-(setq projectile-completion-system 'helm)
-(helm-projectile-on)
-
-
-(add-to-list 'projectile-other-file-alist '("cc" "h" "hpp" "hh"))
-(add-to-list 'projectile-other-file-alist '("h" "c" "cpp" "cc"))
 
 (require 'eassist)
 (setq-default ecb-tip-of-the-day nil)

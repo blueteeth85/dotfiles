@@ -85,7 +85,7 @@
 
 ;;(fa-config-default)
 
-(add-to-list 'auto-mode-alist '("\\.js\\'" . rjsx-mode))
+(add-to-list 'auto-mode-alist '("\\.js\\'" . web-mode))
 
 (defun my-jsx-style()
   (setq js2-mode-show-parse-errors nil)
@@ -96,23 +96,23 @@
 (add-hook 'rjsx-mode-hook 'my-jsx-style)
 
 
-(require 'flycheck)
+;; (require 'flycheck)
 
-;; turn on flychecking globally
-(add-hook 'after-init-hook #'global-flycheck-mode)
+;; ;; turn on flychecking globally
+;; (add-hook 'after-init-hook #'global-flycheck-mode)
 
-;; disable jshint since we prefer eslint checking
-(setq-default flycheck-disabled-checkers
-  (append flycheck-disabled-checkers
-    '(javascript-jshint)))
+;; ;; disable jshint since we prefer eslint checking
+;; (setq-default flycheck-disabled-checkers
+;;   (append flycheck-disabled-checkers
+;;     '(javascript-jshint)))
 
-;; customize flycheck temp file prefix
-(setq-default flycheck-temp-prefix ".flycheck")
+;; ;; customize flycheck temp file prefix
+;; (setq-default flycheck-temp-prefix ".flycheck")
 
-;; disable json-jsonlist checking for json files
-(setq-default flycheck-disabled-checkers
-  (append flycheck-disabled-checkers
-    '(json-jsonlist)))
+;; ;; disable json-jsonlist checking for json files
+;; (setq-default flycheck-disabled-checkers
+;;   (append flycheck-disabled-checkers
+;;     '(json-jsonlist)))
 
 ;;; prog-rc.el ends here
 

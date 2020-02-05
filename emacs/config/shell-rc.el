@@ -24,37 +24,19 @@
 (add-hook 'comint-output-filter-functions 'comint-truncate-buffer)
 (setq comint-prompt-read-only t)
 
-; interpret and use ansi color codes in shell buffers
+;; interpret and use ansi color codes in shell buffers
+(require 'ansi-color)
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
+(defun colorize-compilation-buffer ()
+  (toggle-read-only)
+  (ansi-color-apply-on-region compilation-filter-start (point))
+  (toggle-read-only))
+(add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
 
 (defun set-scroll-conservatively ()
   "Add to shell-mode-hook to prevent jump-scrolling on newlines in shell buffers."
   (set (make-local-variable 'scroll-conservatively) 10))
 (add-hook 'shell-mode-hook 'set-scroll-conservatively)
-
-;; TODO: this is fixed in trunk. remove it when i've upgraded to >= 24.3.50.
-;; http://debbugs.gnu.org/cgi/bugreport.cgi?bug=13223
-(defadvice comint-previous-matching-input
-    (around suppress-history-item-messages activate)
-  "Suppress the annoying 'History item : NNN' messages from shell history isearch.
-If this isn't enough, try the same thing with
-comint-replace-by-expanded-history-before-point."
-  (let ((old-message (symbol-function 'message)))
-    (unwind-protect
-      (progn (fset 'message 'ignore) ad-do-it)
-    (fset 'message old-message))))
-
-(defadvice comint-send-input (around go-to-end-of-multiline activate)
-  "When I press enter, jump to the end of the *buffer*, instead of the end of
-the line, to capture multiline input. (This only has effect if
-`comint-eol-on-send' is non-nil."
-  (flet ((end-of-line () (end-of-buffer)))
-    ad-do-it))
-
-;; not sure why, but comint needs to be reloaded from the source (*not*
-;; compiled) elisp to make the above advice stick.
-;; (load "comint.el.gz")
-
 
 ;; XXX begin automatically_close_completions_in_emacs_shell_comint_mode.txt XXX
 
