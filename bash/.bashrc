@@ -36,9 +36,6 @@ if [ -f ~/.localbashrc ]; then
     source ~/.localbashrc
 fi
 
-if [ -f ~/.dir_colors ]; then
-    eval `dircolors ~/.dir_colors`
-fi
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile

@@ -6,15 +6,14 @@
 
 (defun vlad-cc-style()
   (c-set-style "linux")
-  (c-set-offset 'innamespace '0)
   (c-set-offset 'inextern-lang '0)
   (c-set-offset 'inline-open '0)
   (c-set-offset 'label '*)
   (c-set-offset 'case-label '*)
   (c-set-offset 'access-label '/)
   (c-set-offset 'comment-intro '0)
-  (setq c-basic-offset 2)
-  (setq tab-width 2)
+  (setq c-basic-offset 4)
+  (setq tab-width 4)
   (setq indent-tabs-mode nil)
   )
 

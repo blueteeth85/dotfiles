@@ -67,12 +67,12 @@
 
 (global-set-key [f3] 'ecb-activate)
 (global-set-key [f7] 'ecb-toggle-compile-window)
-(global-set-key (kbd "M-<kp-enter>") 'ecb-toggle-ecb-windows)
+(global-set-key (kbd "M-<f3>") 'ecb-toggle-ecb-windows)
 (global-set-key (kbd "M-<kp-divide>") 'ecb-goto-window-edit1)
 (global-set-key (kbd "M-<kp-multiply>") 'ecb-goto-window-directories)
 (global-set-key (kbd "M-<kp-subtract>") 'ecb-goto-window-methods)
 (global-set-key (kbd "M-<kp-delete>") 'ecb-goto-window-history)
-(global-set-key (kbd "M-<kp-add>") 'ecb-goto-window-compilation)
+(global-set-key (kbd "M-<f7>") 'ecb-goto-window-compilation)
 
 ;; windows
 
@@ -112,6 +112,8 @@
 (global-set-key (kbd "M-]") 'align-current)
 (global-set-key (kbd "M-[") 'align-comments)
 
+(global-set-key [home] 'move-beginning-of-line)
+(global-set-key [end] 'move-end-of-line)
 
 
 (global-set-key (kbd "C-x r SPC") 'rm-set-mark)
