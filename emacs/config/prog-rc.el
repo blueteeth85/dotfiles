@@ -12,6 +12,7 @@
   (c-set-offset 'case-label '*)
   (c-set-offset 'access-label '/)
   (c-set-offset 'comment-intro '0)
+  (c-set-offset 'innamespace '0)
   (setq c-basic-offset 4)
   (setq tab-width 4)
   (setq indent-tabs-mode nil)
@@ -95,6 +96,14 @@
 (add-hook 'rjsx-mode-hook 'my-jsx-style)
 
 
+(defun sqlparse-region (beg end)
+  (interactive "r")
+  (shell-command-on-region
+   beg end
+   "python -c 'import sys, sqlparse; print(sqlparse.format(sys.stdin.read(), reindent=True))'"
+   t t))
+
+
 ;; (require 'flycheck)
 
 ;; ;; turn on flychecking globally
@@ -116,3 +125,4 @@
 ;;; prog-rc.el ends here
 
 
+(elpy-enable)

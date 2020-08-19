@@ -21,11 +21,11 @@
 (global-set-key (kbd "C-h SPC") 'helm-all-mark-rings)
 ;;(global-set-key (kbd "C-c h o") 'helm-occur)
 
-(global-set-key (kbd "C-c h x") 'helm-register)
+;;(global-set-key (kbd "C-c h x") 'helm-register)
 
 (define-key 'help-command (kbd "C-f") 'helm-apropos)
-(define-key 'help-command (kbd "r") 'helm-info-emacs)
-(define-key 'help-command (kbd "C-l") 'helm-locate-library)
+;(define-key 'help-command (kbd "r") 'helm-info-emacs)
+;(define-key 'help-command (kbd "C-l") 'helm-locate-library)
 
 ;; show minibuffer history with Helm
 (define-key minibuffer-local-map (kbd "M-p") 'helm-minibuffer-history)
@@ -53,8 +53,8 @@
 ;(define-key function-args-mode-map (kbd "M-n") nil)
 
 
-;; helm-semantic-autocomplete-etc
-(global-set-key (kbd "M-<return>") 'company-complete)
+;; Helm-semantic-autocomplete-etc
+;;(global-set-key (kbd "M-<return>") 'company-complete)
 (defun my-c-mode-semantic-hook ()
   (local-set-key "\C-ce" 'helm-semantic)
   (local-set-key "\C-xt" 'eassist-switch-h-cpp)
@@ -62,6 +62,11 @@
   (local-set-key "\C-c\C-r" 'semantic-symref)
 )
 (add-hook 'c-mode-common-hook 'my-c-mode-semantic-hook)
+
+(defun my-sql-mode-hook ()
+  (local-set-key (kbd "C-M-]") 'sqlparse-region)
+  )
+(add-hook 'sql-mode-hook 'my-sql-mode-hook)
 
 ;; ecb
 
@@ -125,3 +130,8 @@
 (global-set-key (kbd "M-p") 'backward-paragraph)
 (global-set-key [remap query-replace] 'anzu-query-replace)
 (global-set-key [remap query-replace-regexp] 'anzu-query-replace-regexp)
+
+;; reset elpy keybindings
+(eval-after-load "elpy"
+  '(cl-dolist (key '("C-<left>" "C-<right>"))
+     (define-key elpy-mode-map (kbd key) nil)))

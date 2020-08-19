@@ -1,10 +1,10 @@
 (require 'cc-mode)
-(require 'semantic)
+;; (require 'semantic)
 
-(global-semanticdb-minor-mode 1)
-(global-semantic-idle-scheduler-mode 1)
+;; (global-semanticdb-minor-mode 1)
+;; (global-semantic-idle-scheduler-mode 1)
 
-(semantic-mode 1)
+;; (semantic-mode 1)
 
 (require 'helm)
 (require 'helm-config)
@@ -45,9 +45,9 @@
 (helm-mode 1)
 
 ;; company mode
-(require 'company)
-(add-to-list 'company-backends 'company-c-headers)
-(add-hook 'after-init-hook 'global-company-mode)
+;; (require 'company)
+;; (add-to-list 'company-backends 'company-c-headers)
+;; (add-hook 'after-init-hook 'global-company-mode)
 
 (require 'eassist)
 (setq-default ecb-tip-of-the-day nil)
